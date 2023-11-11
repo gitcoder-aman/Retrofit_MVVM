@@ -81,9 +81,15 @@ dependencies {
     //livedata
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
 
+    //for observeAsState
+    implementation("androidx.compose.runtime:runtime-livedata:1.5.4")
+
+
     //retrofit with gson converter
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.google.code.gson:gson:2.9.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.5.0")
 
     //dagger
     implementation("com.google.dagger:dagger:2.47")

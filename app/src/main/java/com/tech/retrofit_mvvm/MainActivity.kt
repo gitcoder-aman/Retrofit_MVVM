@@ -2,10 +2,8 @@ package com.tech.retrofit_mvvm
 
 import android.os.Bundle
 import android.util.Log
-import android.widget.Space
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -14,30 +12,18 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.SideEffect
-import androidx.compose.runtime.currentComposer
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.runtime.snapshots.SnapshotStateList
-import androidx.compose.runtime.toMutableStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.RectangleShape
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -73,12 +59,11 @@ class MainActivity : ComponentActivity() {
 
 
                 mainViewModel.productsLiveData.observe(this, Observer { dataList ->
-                    title = dataList.joinToString { x -> x.title + "\n\n" }
+//                    title = dataList.joinToString { x -> x.title + "\n\n" }
                     dataListProduct.addAll(dataList)
                     Log.d("@@@@", "datasize= "+dataListProduct.size.toString())
                 })
                 ResponseDataUI(dataListProduct)
-
             }
         }
     }
@@ -95,6 +80,7 @@ fun ResponseDataUI(dataListProduct: List<Products>) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             LazyColumn {
+
                 items(dataListProduct) {
                     CardLayout(
                         title = it.title,
@@ -121,7 +107,8 @@ fun CardLayout(
     image: String
 ) {
     Card(
-        modifier = Modifier.padding(10.dp)
+        modifier = Modifier
+            .padding(10.dp)
             .fillMaxWidth()
             .height(300.dp)
     ) {
